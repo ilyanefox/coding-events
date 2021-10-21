@@ -1,8 +1,7 @@
 package org.launchcode.codingevents.models;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
+import java.util.Date;
 import java.util.Objects;
 
 public class Event {
@@ -21,16 +20,42 @@ public class Event {
     @Email(message = "Invalid email. Try again.")
     private String contactEmail;
 
-    public Event(String name, String description, String contactEmail) {
+    @NotBlank(message = "Location is required")
+    private String location;
+
+    private EventType type;
+
+    @AssertTrue
+    private boolean registrationRequired;
+
+    @Positive(message = "Number of attendees must be one or more.")
+    private int attendees;
+
+    @Future(message = "Must be a future date")
+    private Date date;
+
+    public Event(String name, String description, String contactEmail, EventType type, String location, boolean registrationRequired, int attendees) {
         this();
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
+        this.type = type;
+        this.location = location;
+        this.registrationRequired = registrationRequired;
+        this.attendees = attendees;
     }
 
     public Event() {
         this.id = nextId;
         nextId++;
+    }
+
+    public EventType getType() {
+        return type;
+    }
+
+    public void setType(EventType type) {
+        this.type = type;
     }
 
     public String getName() {
@@ -59,6 +84,30 @@ public class Event {
 
     public void setContactEmail(String contactEmail) {
         this.contactEmail = contactEmail;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public boolean isRegistrationRequired() {
+        return registrationRequired;
+    }
+
+    public void setRegistrationRequired(boolean registrationRequired) {
+        this.registrationRequired = registrationRequired;
+    }
+
+    public int getAttendees() {
+        return attendees;
+    }
+
+    public void setAttendees(int attendees) {
+        this.attendees = attendees;
     }
 
     @Override
