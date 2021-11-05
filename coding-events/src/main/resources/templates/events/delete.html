@@ -7,7 +7,7 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<form method="post">
+<form method="post" action="/events/delete">
 
 
         <th:block th:each="event : ${events}">
