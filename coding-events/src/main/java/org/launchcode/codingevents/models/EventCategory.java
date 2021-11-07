@@ -8,13 +8,12 @@ import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @Entity
-public class EventCategory {
+public class EventCategory extends AbstractEntity {
 
-    @Id
-    @GeneratedValue
-    private int id;
 
-    @NotBlank(message = "Event Category is required")
+
+    //@NotBlank(message = "Event Category is required")
+    @Size(min = 3, message = "Name must be 3 char long")
     private String name;
 
     public EventCategory(String name) {
@@ -23,9 +22,6 @@ public class EventCategory {
 
     public EventCategory() {}
 
-    public int getId() {
-        return id;
-    }
 
     public String getName() {
         return name;
@@ -35,24 +31,7 @@ public class EventCategory {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "EventCategory{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        EventCategory that = (EventCategory) o;
-        return id == that.id;
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-}
+
