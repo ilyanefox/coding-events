@@ -25,7 +25,6 @@ public class EventController {
         return "events/index";
     }
 
-    //lives at /events/create
     @GetMapping("create")
     public String displayCreateEventForm(Model model) {
         model.addAttribute("title", "Create Event");
@@ -35,10 +34,10 @@ public class EventController {
     }
 
     @PostMapping("create")
-    public String processCreateEventForm(@ModelAttribute @Valid Event newEvent, Errors errors, Model model) {
+    public String processCreateEventForm(@ModelAttribute @Valid Event newEvent,
+                                         Errors errors, Model model) {
         if(errors.hasErrors()) {
             model.addAttribute("title", "Create Event");
-
             return "events/create";
         }
 
@@ -58,12 +57,12 @@ public class EventController {
 
         if (eventIds != null) {
             for (int id : eventIds) {
-               eventRepository.deleteById(id);
+                eventRepository.deleteById(id);
             }
         }
+
         return "redirect:";
-
     }
-}
 
+}
 

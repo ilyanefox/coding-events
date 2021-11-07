@@ -9,7 +9,6 @@ import java.util.Date;
 public class Event extends AbstractEntity {
 
 
-
     @NotBlank(message = "Name is required")
     @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
     private String name;
@@ -26,23 +25,15 @@ public class Event extends AbstractEntity {
 
     private EventType type;
 
-    @AssertTrue
-    private boolean registrationRequired;
 
-    @Positive(message = "Number of attendees must be one or more.")
-    private int attendees;
 
-    @Future(message = "Must be a future date")
-    private Date date;
-
-    public Event(String name, String description, String contactEmail, EventType type, String location, boolean registrationRequired, int attendees) {
+    public Event(String name, String description, String contactEmail, EventType type, String location) {
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
         this.type = type;
         this.location = location;
-        this.registrationRequired = registrationRequired;
-        this.attendees = attendees;
+
     }
 
     public Event() {}
@@ -89,28 +80,10 @@ public class Event extends AbstractEntity {
         this.location = location;
     }
 
-    public boolean isRegistrationRequired() {
-        return registrationRequired;
-    }
-
-    public void setRegistrationRequired(boolean registrationRequired) {
-        this.registrationRequired = registrationRequired;
-    }
-
-    public int getAttendees() {
-        return attendees;
-    }
-
-    public void setAttendees(int attendees) {
-        this.attendees = attendees;
-    }
-
     @Override
     public String toString() {
         return name;
     }
-
-
 
 
 }
