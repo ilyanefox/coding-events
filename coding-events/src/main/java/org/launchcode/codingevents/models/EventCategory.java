@@ -6,7 +6,6 @@ import javax.validation.constraints.Size;
 @Entity
 public class EventCategory extends AbstractEntity {
 
-
     @Size(min = 3, message = "Name must be 3 char long")
     private String name;
 
@@ -24,7 +23,12 @@ public class EventCategory extends AbstractEntity {
         this.name = name;
     }
 
+
+    @Override
+    public String toString() {
+        return name;
     }
+}
 
 
 

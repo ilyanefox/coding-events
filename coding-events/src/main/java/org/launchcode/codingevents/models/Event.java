@@ -1,6 +1,7 @@
 package org.launchcode.codingevents.models;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.*;
 import java.util.Date;
 
@@ -23,28 +24,21 @@ public class Event extends AbstractEntity {
     @NotBlank(message = "Location is required")
     private String location;
 
-    private EventType type;
+    @ManyToOne
+    @NotNull(message = "Category is required")
+    private EventCategory eventCategory;
 
 
-
-    public Event(String name, String description, String contactEmail, EventType type, String location) {
+    public Event(String name, String description, String contactEmail, EventCategory eventCategory, String location) {
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
-        this.type = type;
+        this.eventCategory= eventCategory;
         this.location = location;
 
     }
 
     public Event() {}
-
-    public EventType getType() {
-        return type;
-    }
-
-    public void setType(EventType type) {
-        this.type = type;
-    }
 
     public String getName() {
         return name;
@@ -62,8 +56,6 @@ public class Event extends AbstractEntity {
         this.description = description;
     }
 
-
-
     public String getContactEmail() {
         return contactEmail;
     }
@@ -78,6 +70,14 @@ public class Event extends AbstractEntity {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public EventCategory getEventCategory() {
+        return eventCategory;
+    }
+
+    public void setEventCategory(EventCategory eventCategory) {
+        this.eventCategory = eventCategory;
     }
 
     @Override
