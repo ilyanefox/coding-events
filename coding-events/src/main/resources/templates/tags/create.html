@@ -3,16 +3,16 @@
 <head th:replace="fragments :: head"></head>
 <body class="container">
 
-<header th:replace="fragments :: header"></header>
+<nav th:replace="fragments :: navigation"></nav>
 
 <form method="post">
     <div class="form-group">
-        <label>Name
+        <label>Tag
             <input th:field="${tag.name}" class="form-control">
         </label>
         <span th:errors="${tag.name}" class="error"></span>
     </div>
-    <input type="submit" value="Create" class="btn btn-primary">
+    <input type="submit" value="Create" class="btn btn-success">
 </form>
 
 </body>

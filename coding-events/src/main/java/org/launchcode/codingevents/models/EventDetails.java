@@ -15,13 +15,13 @@ public class EventDetails extends AbstractEntity{
     @Email(message = "Invalid email. Try again.")
     private String contactEmail;
 
-    @NotBlank(message = "Location is required")
-    private String location;
+//    @NotBlank(message = "Location is required")
+//    private String location;
 
     public EventDetails(String description, String contactEmail, String location) {
         this.description = description;
         this.contactEmail = contactEmail;
-        this.location = location;
+//        this.location = location;
     }
 
     public EventDetails() {}
@@ -42,11 +42,11 @@ public class EventDetails extends AbstractEntity{
         this.contactEmail = contactEmail;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
+//    public String getLocation() {
+//        return location;
+//    }
+//
+//    public void setLocation(String location) {
+//        this.location = location;
+//    }
 }
